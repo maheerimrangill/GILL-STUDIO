@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Business Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+background:linear-gradient(to bottom,#ff8c00,#ffd000);
+border-radius:20px;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+font-size:32px;
+font-weight:900;
+letter-spacing:2px;
+background:linear-gradient(to right,#ff9500,#ffd000);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav a{
+text-decoration:none;
+color:#ddd;
+margin-left:35px;
+font-size:15px;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#ffb300;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:140px 8% 80px;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+top:-200px;
+right:-200px;
+width:500px;
+height:500px;
+background:#ff9500;
+filter:blur(220px);
+opacity:0.25;
+border-radius:50%;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+bottom:-150px;
+left:-150px;
+width:450px;
+height:450px;
+background:#ffd000;
+filter:blur(220px);
+opacity:0.15;
+border-radius:50%;
+}
+
+.hero-content{
+max-width:650px;
+position:relative;
+z-index:1;
+}
+
+.tag{
+display:inline-block;
+padding:12px 20px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:40px;
+font-size:14px;
+margin-bottom:25px;
+color:#ddd;
+}
+
+.hero h1{
+font-size:78px;
+line-height:1.1;
+font-weight:900;
+margin-bottom:25px;
+}
+
+.hero h1 span{
+background:linear-gradient(to right,#ff9500,#ffd000);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.8;
+color:#bcbcbc;
+margin-bottom:40px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:17px 35px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+transition:0.4s;
+}
+
+.btn-primary{
+background:linear-gradient(to right,#ff9500,#ffd000);
+color:black;
+box-shadow:0 10px 35px rgba(255,170,0,0.35);
+}
+
+.btn-primary:hover{
+transform:translateY(-5px) scale(1.03);
+}
+
+.btn-secondary{
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+}
+
+.btn-secondary:hover{
+background:white;
+color:black;
+}
+
+.hero-image{
+position:relative;
+z-index:1;
+}
+
+.hero-image img{
+width:520px;
+border-radius:35px;
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 30px 60px rgba(0,0,0,0.5);
+}
+
+.stats{
+display:flex;
+gap:50px;
+margin-top:50px;
+flex-wrap:wrap;
+}
+
+.stat h2{
+font-size:42px;
+font-weight:900;
+}
+
+.stat p{
+font-size:15px;
+color:#aaa;
+margin-top:5px;
+}
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title span{
+color:#ffb300;
+font-weight:700;
+letter-spacing:3px;
+text-transform:uppercase;
+font-size:14px;
+}
+
+.section-title h2{
+font-size:55px;
+margin-top:15px;
+font-weight:900;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.service-box{
+background:#111;
+padding:40px 30px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.06);
+transition:0.4s;
+}
+
+.service-box:hover{
+transform:translateY(-10px);
+border-color:#ffb300;
+}
+
+.icon{
+width:70px;
+height:70px;
+background:linear-gradient(to right,#ff9500,#ffd000);
+border-radius:20px;
+margin-bottom:25px;
+}
+
+.service-box h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.service-box p{
+line-height:1.8;
+color:#aaa;
+}
+
+.portfolio-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.project{
+position:relative;
+overflow:hidden;
+border-radius:35px;
+}
+
+.project img{
+width:100%;
+height:480px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.project:hover img{
+transform:scale(1.1);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,0.95),transparent);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:35px;
+}
+
+.overlay span{
+color:#ffb300;
+margin-bottom:10px;
+}
+
+.overlay h3{
+font-size:34px;
+font-weight:800;
+}
+
+.about{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+flex-wrap:wrap;
+}
+
+.about img{
+width:500px;
+border-radius:35px;
+}
+
+.about-content{
+flex:1;
+min-width:300px;
+}
+
+.about-content h2{
+font-size:55px;
+font-weight:900;
+margin:20px 0;
+}
+
+.about-content p{
+color:#aaa;
+line-height:1.9;
+margin-bottom:25px;
+}
+
+.features div{
+margin-bottom:18px;
+font-size:18px;
+}
+
+.cta{
+background:linear-gradient(to right,#ff9500,#ffd000);
+padding:80px;
+text-align:center;
+border-radius:40px;
+color:black;
+}
+
+.cta h2{
+font-size:60px;
+font-weight:900;
+margin-bottom:20px;
+}
+
+.cta p{
+font-size:18px;
+max-width:800px;
+margin:auto auto 35px;
+line-height:1.8;
+}
+
+.cta a{
+background:black;
+color:white;
+padding:18px 40px;
+text-decoration:none;
+border-radius:50px;
+font-weight:700;
+display:inline-block;
+transition:0.3s;
+}
+
+.cta a:hover{
+transform:scale(1.05);
+}
+
+footer{
+padding:35px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+footer p{
+color:#999;
+}
+
+.socials a{
+margin-left:20px;
+color:#ccc;
+text-decoration:none;
+transition:0.3s;
+}
+
+.socials a:hover{
+color:#ffb300;
+}
+
+@media(max-width:1100px){
+.hero{
+flex-direction:column;
+text-align:center;
+gap:60px;
+}
+
+.hero h1{
+font-size:58px;
+}
+
+.hero-image img{
+width:100%;
+max-width:500px;
+}
+
+.stats{
+justify-content:center;
+}
+
+.about{
+flex-direction:column;
+}
+}
+
+@media(max-width:768px){
+header{
+padding:18px 5%;
+}
+
+nav{
+display:none;
+}
+
+.hero{
+padding:140px 5% 80px;
+}
+
+.hero h1{
+font-size:46px;
+}
+
+.section-title h2,
+.about-content h2,
+.cta h2{
+font-size:38px;
+}
+
+section{
+padding:80px 5%;
+}
+
+.cta{
+padding:50px 30px;
+}
+
+footer{
+flex-direction:column;
+gap:20px;
+text-align:center;
+}
+
+.socials a{
+margin:0 10px;
+}
+}
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+background:#25D366;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:30px;
+text-decoration:none;
+color:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+z-index:1000;
+transition:0.3s;
+}
+
+.whatsapp:hover{
+transform:scale(1.1);
+}
+#loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.spinner{
+width:80px;
+height:80px;
+border:5px solid #333;
+border-top:5px solid #ffb300;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+.socials a{
+display:inline-block;
+margin:10px;
+padding:12px 20px;
+border-radius:30px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.socials a:hover{
+background:linear-gradient(to right,#ff9500,#ffd000);
+color:black;
+transform:translateY(-3px);
+}
+</style>
+</head>
+<body>
+<div id="loader">
+<div class="spinner"></div>
+</div>
+<header>
+<div class="logo">GILL STUDIO</div>
+
+<nav>
+<a href="#services">Services</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<div class="tag">Trusted By Modern Businesses</div>
+
+<h1>We Build <span>Premium Digital</span> Experiences</h1>
+
+<p>
+We create luxury websites and high-end branding solutions that make businesses look premium, professional and impossible to ignore.
+</p>
+
+<div class="buttons">
+<a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+<a href="#contact" class="btn btn-secondary">Contact Us</a>
+</div>
+
+<div class="stats">
+<div class="stat">
+<h2>50+</h2>
+<p>Projects Completed</p>
+</div>
+
+<div class="stat">
+<h2>98%</h2>
+<p>Client Satisfaction</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>Premium Support</p>
+</div>
+</div>
+</div>
+
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop" alt="Luxury Office">
+</div>
+</section>
+
+<section id="services">
+<div class="section-title">
+<span>Our Services</span>
+<h2>What We Offer</h2>
+</div>
+
+<div class="services">
+<div class="service-box">
+<div class="icon"></div>
+<h3>Website Development</h3>
+<p>Luxury modern websites designed to impress clients and grow your business online.</p>
+</div>
+
+<div class="service-box">
+<div class="icon"></div>
+<h3>Brand Identity</h3>
+<p>Professional branding, logos and visual systems that make your business unforgettable.</p>
+</div>
+
+<div class="service-box">
+<div class="icon"></div>
+<h3>Digital Marketing</h3>
+<p>Smart marketing strategies for social media and online growth.</p>
+</div>
+
+<div class="service-box">
+<div class="icon"></div>
+<h3>Business Solutions</h3>
+<p>Professional systems and tools customized for modern businesses.</p>
+</div>
+</div>
+</section>
+
+<section id="portfolio">
+<div class="section-title">
+<span>Portfolio</span>
+<h2>Featured Projects</h2>
+</div>
+
+<div class="portfolio-grid">
+<div class="project">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop">
+<div class="overlay">
+<span>Restaurant Branding</span>
+<h3>Luxury Restaurant</h3>
+</div>
+</div>
+
+<div class="project">
+<img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop">
+<div class="overlay">
+<span>E-Commerce</span>
+<h3>Modern Clothing Store</h3>
+</div>
+</div>
+
+<div class="project">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop">
+<div class="overlay">
+<span>Corporate Website</span>
+<h3>Real Estate Brand</h3>
+</div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="about">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+<div class="about-content">
+<span style="color:#ffb300;font-weight:700;letter-spacing:2px;">ABOUT US</span>
+
+<h2>Helping Brands Look Premium Online</h2>
+
+<p>
+We specialize in creating high-quality digital experiences that help businesses stand out from competitors and attract more customers.
+</p>
+
+<div class="features">
+<div>✔ Luxury Website Design</div>
+<div>✔ Fast & Responsive Experience</div>
+<div>✔ Professional Business Branding</div>
+<div>✔ Modern UI/UX Design</div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="cta">
+<h2>Ready To Grow Your Business?</h2>
+<p>
+Let us build a professional online presence that makes your business look premium and trusted.
+</p>
+
+<a href="#contact">Start Your Project</a>
+</div>
+</section>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+ScrollReveal().reveal('.service-box',{
+distance:'60px',
+duration:2000,
+delay:200,
+origin:'bottom',
+interval:200
+});
+
+ScrollReveal().reveal('.project',{
+distance:'60px',
+duration:2000,
+delay:200,
+origin:'bottom',
+interval:200
+});
+</script>
+<footer id="contact">
+    <div class="socials">
+  <a href="https://instagram.com/YOURUSERNAME" target="_blank">Instagram</a>
+  <a href="https://facebook.com/YOURPAGE" target="_blank">Facebook</a>
+  <a href="https://wa.me/923001234567" target="_blank">WhatsApp</a>
+</div>
+<div>
+<div class="logo">GILL STUDIO</div>
+<p>Premium Websites & Branding Solutions</p>
+</div>
+
+</footer>
+<a href="https://wa.me/923336874125" class="whatsapp">
+💬
+</a>
+<script>
+window.addEventListener("load",()=>{
+document.getElementById("loader").style.display="none";
+});
+</script>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+
+ScrollReveal().reveal('.service-box',{
+distance:'60px',
+duration:2000,
+delay:200,
+origin:'bottom',
+interval:200
+});
+
+ScrollReveal().reveal('.project',{
+distance:'60px',
+duration:2000,
+delay:200,
+origin:'bottom',
+interval:200
+});
+
+</script>
+</body>
+</html>
